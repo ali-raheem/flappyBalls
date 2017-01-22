@@ -5,10 +5,10 @@ from random import randint
 from time import sleep
 
 class flappyBalls():
-	def __init__(self):
+	def __init__(self, screenH = 800, screenW = 640):
 		pygame.init()
-		self.screenH = 800
-		self.screenW = 640
+		self.screenH = screenH
+		self.screenW = screenW
 		self.screen = pygame.display.set_mode((self.screenW, self.screenH))
 		self.splash = pygame.image.load("images/splash.png")
 		self.gameover = pygame.image.load("images/gameover.png")
@@ -67,7 +67,7 @@ class flappyBalls():
 			   (self.birdX< self.pipeX+self.pipeW):
 				done = 1
 
-			pipeY2 = self.pipeY - 512 - self.pipeGap
+			pipeY2 = self.pipeY - self.pipeH - self.pipeGap
 			if (self.birdY+self.birdH > pipeY2) and \
 			   (self.birdY < pipeY2+self.pipeH) and \
 			   (self.birdX+self.birdH > self.pipeX) and \
